@@ -176,6 +176,104 @@ The agent receives a reward of `1` for reaching the goal and `0` for any other a
 The project contains five predefined test cases, each checking the agent's ability to learn optimal policies under different configurations of the Frozen Lake environment. These test cases ensure that the SARSA agent behaves correctly across various scenarios, including grid size and hyperparameter values.
 
 ---
+### HW4: Reinforcement Learning - Taxi-v3 Environment
+
+## **Overview**
+This homework assignment involves implementing a Q-learning algorithm to solve a Markov Decision Process (MDP) for the Taxi-v3 environment. The task is to train an agent to pick up a passenger from one of four designated locations and drop them off at another, while maximizing rewards and minimizing penalties. The environment is deterministic, and the agent needs to learn an optimal policy using Q-learning.
+
+### **Environment Description:**
+- **Grid-based Environment**: The Taxi-v3 environment consists of a fixed grid where a taxi navigates between different locations to pick up and drop off passengers.
+- **States**: The state space consists of different configurations of the taxi's location, passenger's location, and destination.
+- **Actions**: The agent can take 6 actions:
+  1. Move South
+  2. Move North
+  3. Move East
+  4. Move West
+  5. Pickup Passenger
+  6. Drop-off Passenger
+- **Rewards**:
+  - Successfully dropping off a passenger at the correct location yields a reward of +20.
+  - Incorrect attempts to drop off or pick up the passenger incur a penalty of -10.
+  - Each time step costs the agent a reward of -1 to encourage efficiency.
+
+### **Objective:**
+Your task is to implement a Q-learning agent that:
+- Trains in the Taxi-v3 environment.
+- Learns the optimal Q-values for state-action pairs.
+- Uses an epsilon-greedy policy to explore and exploit the environment.
+- Returns the optimal Q-value for given state-action pairs.
+
+---
+
+## **Q-Learning Algorithm:**
+Q-learning is a **model-free, off-policy** reinforcement learning algorithm. The agent learns a Q-value function $$\ Q(s, a) \$$ that estimates the expected future rewards of taking action $$\( a \)$$ in state $$\ s \$$. The update rule for Q-learning is:
+$$\ 
+Q(s, a) \leftarrow Q(s, a) + \alpha \left[ r + \gamma \max_a Q(s', a) - Q(s, a) \right] 
+\$$
+Where:
+- $$\ \alpha \$$ is the learning rate.
+- $$\ \gamma \$$ is the discount factor.
+- $$\ r \$$ is the reward received after taking action $$\ a \$$ from state $$\ s \$$.
+- $$\ s' \$$ is the new state.
+
+The agent balances exploration and exploitation using an **epsilon-greedy policy**:
+- With probability $$\ \epsilon \$$, the agent takes a random action (exploration).
+- With probability $$\ 1 - \epsilon \$$, the agent chooses the action with the highest Q-value (exploitation).
+
+---
+
+## **Instructions:**
+
+### **Algorithm Details:**
+- **Initialization**:
+  - The Q-table is initialized to zeros for all state-action pairs.
+  - The agent's epsilon (exploration rate) starts at 1.0 and decays over time to encourage exploration early in training and exploitation later.
+  
+- **Training**:
+  - The agent interacts with the environment for a specified number of episodes.
+  - For each episode, the agent:
+    1. Resets the environment.
+    2. Chooses an action using the epsilon-greedy policy.
+    3. Updates the Q-value based on the observed reward and next state.
+    4. Decays epsilon to reduce exploration as the agent learns more.
+
+### **Tests**:
+The implementation includes several unit tests using the `unittest` framework. These tests verify the correctness of your Q-learning agent by comparing the learned Q-values for specific state-action pairs to expected values.
+
+---
+
+## **How to Run:**
+1. **Dependencies**:
+   - Python 3.6.x
+   - gym==0.17.2
+   - numpy==1.18.0
+   - unittest (for running tests)
+
+2. **Run the notebook**:
+   - Implement the `solve()` method to train the agent and populate the Q-table.
+   - Use the `unittest` framework to run the test cases and validate the solution.
+
+### **Environment Setup**:
+Ensure you have the correct versions of the dependencies as listed above. If necessary, create a virtual environment and install the dependencies:
+
+```bash
+pip install gym==0.17.2 numpy==1.18.0
+```
+
+---
+
+## **Resources:**
+- **Chapters 6.5 and 2.6.1** of Sutton and Barto's *Reinforcement Learning: An Introduction* provide foundational understanding of Q-learning and off-policy temporal difference (TD) control methods.
+- **Algorithms for Sequential Decision Making** by M. Littman discusses Q-learning and related algorithms for solving decision-making problems.
+
+---
+
+## **Notes:**
+- The expected results should be accurate up to 3 decimal places, as specified in the test cases.
+- The discount factor for this problem is set to $$\ \gamma = 0.9 \$$ to balance short-term and long-term rewards.
+- The number of episodes for training is high to ensure the agent fully explores and converges to the optimal policy.
+
+---
 
 # Project 1: TD(λ) Replication
 
