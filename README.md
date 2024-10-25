@@ -344,6 +344,126 @@ The report includes a discussion of the following:
 - **Reinforcement Learning: An Introduction**: Sutton & Barto (2nd Edition, Chapters 7 & 12).
 - **Lectures**: Reinforcement Learning (Lesson 3: Temporal Difference Learning).
 
+## Result
+
+![figure3](https://github.com/user-attachments/assets/032d44f4-d8db-43d6-a3b8-e79db02c8b14)
+![figure4](https://github.com/user-attachments/assets/d0764e45-159d-4993-92c9-c277fc808731)
+![figure5](https://github.com/user-attachments/assets/15cdc8a0-55bd-4135-8450-d8702964c9ae)
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for more details.
+
+---
+
+# Project 2: DQN for Lunar Lander
+
+## Overview
+
+This project focuses on training a Deep Q-Network (DQN) agent to solve the Lunar Lander problem using the OpenAI Gym's `LunarLander-v2` environment. The goal is to train the agent to land successfully while optimizing the reward over time. The project involves tuning key hyperparameters such as epsilon decay, gamma (discount factor), and learning rate to achieve optimal performance.
+
+## Structure
+
+1. **Code Implementation**: The code to train the DQN agent on the Lunar Lander environment, focusing on the impact of different hyperparameters.
+   - `dqn_lunar_lander.py`: Main script to train the DQN agent.
+   - `dqn_lunar_lander_Epsilon_Decay.py`: Script for training the agent with variations in the epsilon decay rate.
+   - `dqn_lunar_lander_Gamma.py`: Script for training the agent with different values of the discount factor (gamma).
+   - `dqn_lunar_lander_Learning_Rate.py`: Script for training the agent with varying learning rates.
+
+2. **Graph Generation**: The code will produce graphs illustrating:
+   - The reward per episode during training.
+   - Performance over 100 consecutive episodes using the trained agent.
+   - The effect of different hyperparameter settings on the agent's performance.
+
+3. **Report**: A written report that details:
+   - The problem being addressed.
+   - The experiments conducted and their implementation.
+   - Analysis of the results.
+   - Comparisons between the performance of the agent with different hyperparameter settings.
+   - Challenges encountered during training and how they were resolved.
+
+## How to Run the Project
+
+1. Install the required dependencies:
+    ```bash
+    pip install torch numpy matplotlib gym
+    ```
+
+2. Clone or download the project repository.
+
+3. To train the DQN agent with default settings:
+    ```bash
+    python dqn_lunar_lander.py
+    ```
+
+4. To experiment with different hyperparameters, run the respective scripts:
+    - Epsilon decay variation:
+      ```bash
+      python dqn_lunar_lander_Epsilon_Decay.py
+      ```
+    - Gamma variation:
+      ```bash
+      python dqn_lunar_lander_Gamma.py
+      ```
+    - Learning rate variation:
+      ```bash
+      python dqn_lunar_lander_Learning_Rate.py
+      ```
+
+5. The generated graphs will be saved as `.png` files in the `figures/` directory.
+
+## Notes and Error Handling
+
+- **Box2D Installation Issues**:
+  - If you encounter errors related to Box2D when running `gym.make('LunarLander-v2')`, you may need to compile Box2D from source. Follow these steps:
+    ```bash
+    pip uninstall box2d-py
+    git clone https://github.com/pybox2d/pybox2d
+    cd pybox2d/
+    python setup.py clean
+    python setup.py build
+    sudo python setup.py install
+    ```
+  - Windows users can use prebuilt Python wheels from [here](https://www.lfd.uci.edu/~gohlke/pythonlibs/#pybox2d).
+
+- **Common Training Instabilities**:
+  - **Diverging Rewards**: If the rewards start to diverge or become unstable, try reducing the learning rate in `dqn_lunar_lander_Learning_Rate.py`.
+  - **Slow Convergence**: If the agent is learning too slowly, consider adjusting the gamma value in `dqn_lunar_lander_Gamma.py` to focus more on immediate rewards or fine-tune the epsilon decay for better exploration-exploitation balance.
+  - **Exploding Gradients**: If you encounter exploding gradients during training, use gradient clipping in PyTorch:
+    ```python
+    torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
+    ```
+
+- **Runtime Errors**:
+  - If you encounter memory-related issues, try reducing the batch size or clearing the replay buffer periodically:
+    ```python
+    if len(replay_buffer) > buffer_size:
+        replay_buffer.pop(0)
+    ```
+
+## Result
+
+![dqn_lunar_lander](https://github.com/user-attachments/assets/c219d51a-83ed-47fe-84a1-5f89292fbeae)
+![Figure_1](https://github.com/user-attachments/assets/ba0a1b24-2b39-45a7-b2e0-2e8d33b135c0)
+![Figure_2](https://github.com/user-attachments/assets/f0ed4f3b-9d4a-4bb0-b7aa-e4fcd235181c)
+![Figure_3](https://github.com/user-attachments/assets/600fbe3b-649f-40cb-829d-4d120c5a21da)
+![Figure_4](https://github.com/user-attachments/assets/d112f530-aad8-4a03-872b-eb7a650d882e)
+![Figure_5](https://github.com/user-attachments/assets/6216cad2-074c-4f3e-bced-7b0d3879ecc2)
+![Figure_6](https://github.com/user-attachments/assets/0e3ff07e-c5c0-43d6-a625-713459902d0a)
+![Figure_7](https://github.com/user-attachments/assets/5aa0896b-c930-442e-a52f-001e626c80f6)
+
+
+## Analysis
+
+The report includes a discussion of the following:
+
+
+## Resources
+
+- **OpenAI Gym**: [Lunar Lander Environment](https://github.com/openai/gym/blob/master/gym/envs/box2d/lunar_lander.py).
+- **Reinforcement Learning Texts**: Sutton & Barto, *Reinforcement Learning: An Introduction*.
+- **Lectures**: Reinforcement Learning (Lesson 8: Generalization).
+
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for more details.
