@@ -443,7 +443,7 @@ This project focuses on training a Deep Q-Network (DQN) agent to solve the Lunar
 
 ## Result
 
-![dqn_lunar_lander](https://github.com/user-attachments/assets/c219d51a-83ed-47fe-84a1-5f89292fbeae)
+![gameplay](https://github.com/user-attachments/assets/a2547be3-7828-400d-a1eb-88143defedb7)
 ![Figure_1](https://github.com/user-attachments/assets/ba0a1b24-2b39-45a7-b2e0-2e8d33b135c0)
 ![Figure_2](https://github.com/user-attachments/assets/f0ed4f3b-9d4a-4bb0-b7aa-e4fcd235181c)
 ![Figure_3](https://github.com/user-attachments/assets/600fbe3b-649f-40cb-829d-4d120c5a21da)
@@ -451,12 +451,8 @@ This project focuses on training a Deep Q-Network (DQN) agent to solve the Lunar
 ![Figure_5](https://github.com/user-attachments/assets/6216cad2-074c-4f3e-bced-7b0d3879ecc2)
 ![Figure_6](https://github.com/user-attachments/assets/0e3ff07e-c5c0-43d6-a625-713459902d0a)
 ![Figure_7](https://github.com/user-attachments/assets/5aa0896b-c930-442e-a52f-001e626c80f6)
-
-
-## Analysis
-
-The report includes a discussion of the following:
-
+![LunarLander-v2](https://github.com/user-attachments/assets/8da0c3a2-e8c9-4d7f-89b1-553cf8e60e98)
+![result](https://github.com/user-attachments/assets/32883bd4-ff37-4e87-a834-51bd3f03a91e)
 
 ## Resources
 
